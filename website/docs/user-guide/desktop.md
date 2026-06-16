@@ -58,9 +58,8 @@ Chatting against a Hermes instance on another machine instead of the bundled loc
 
 The model picker lives in the **composer**, just left of the microphone. Click it to switch the model, reasoning effort, and fast mode from one dropdown.
 
-- **The composer picker is per-session.** Switching models there changes only the **current chat** — your profile's default is untouched, so the next new chat starts on the default again. (This matches the CLI/TUI `/model`, which is also session-only by default.)
-- **Set the default in Settings → Model.** That "main" model is your **per-profile global default** — it's what new chats, crons, subagents, and auxiliary tasks start from. Each [profile](#sessions--profiles) keeps its own default.
-- **Want a model switch to stick globally?** Open the full picker dialog and tick **Persist globally (otherwise this session only)** — it writes the same per-profile default as Settings → Model. (When there's no active session yet, selections persist globally automatically.)
+- **The composer picker is sticky UI state and never touches your default.** It's remembered locally (per device) and **follows** across new chats and restarts instead of snapping back to the default — pick a model once and the next `Cmd/Ctrl+N` opens on it. With a live chat, switching models scopes the change to that **current chat**; either way the selection rides along when the session is created/switched and is **never** written to the profile default. (Switching [profiles](#sessions--profiles) reseeds to that profile's own default.)
+- **Set the default in Settings → Model.** That "main" model is your **per-profile global default** — it's what new chats, crons, subagents, and auxiliary tasks start from, and it's the only place that writes it. Each [profile](#sessions--profiles) keeps its own default.
 - **Per-model effort/fast presets.** Each model remembers its own reasoning effort and fast-mode choice in the desktop app, re-applied to the session whenever you pick that model. These presets are a desktop convenience and don't change crons or subagents.
 
 ### File browser
